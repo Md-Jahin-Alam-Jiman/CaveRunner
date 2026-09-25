@@ -50,6 +50,20 @@ public class Main extends ApplicationAdapter {
 
         // Load textures.
         assets = new Assets();
+
+        // System.out.println("AIR: " + Tiles.getName(Tiles.AIR));
+        // System.out.println("GRASS: " + Tiles.getName(Tiles.GRASS));
+        // System.out.println("DIRT: " + Tiles.getName(Tiles.DIRT));
+        // System.out.println("STONE: " + Tiles.getName(Tiles.STONE));
+        // System.out.println("COAL: " + Tiles.getName(Tiles.COAL));
+        // System.out.println("IRON: " + Tiles.getName(Tiles.IRON));
+        // System.out.println("GOLD: " + Tiles.getName(Tiles.GOLD));
+        
+        // System.out.println("Stone solid: " + Tiles.isSolid(Tiles.STONE));
+        // System.out.println("Air solid: " + Tiles.isSolid(Tiles.AIR));
+        
+        // System.out.println("Gold ore: " + Tiles.isOre(Tiles.GOLD));
+        // System.out.println("Dirt ore: " + Tiles.isOre(Tiles.DIRT));
     }
 
     @Override
