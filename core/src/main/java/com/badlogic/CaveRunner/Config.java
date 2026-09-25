@@ -13,7 +13,7 @@ public final class Config {
 
     // ---- World ----
 
-    public static final int TILE = 16;
+    public static final int TILE_SIZE = 16;
 
     public static final int WORLD_W = 300;
 
@@ -27,9 +27,9 @@ public final class Config {
 
     // ---- Player ----
 
-    public static final float PLAYER_W = TILE * 0.75f;
+    public static final float PLAYER_W = TILE_SIZE * 0.75f;
 
-    public static final float PLAYER_H = TILE * 1.75f;
+    public static final float PLAYER_H = TILE_SIZE * 1.75f;
 
     public static final float MOVE_SPEED = 120f;
 

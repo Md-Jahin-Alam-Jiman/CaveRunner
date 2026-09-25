@@ -1,71 +1,48 @@
 package com.badlogic.CaveRunner;
 
-import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.graphics.Pixmap;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Disposable;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
- * Loads textures once and provides them by name.
+ * Module 3 rendering assets.
+ *
+ * A single white texture is enough because SpriteBatch
+ * can tint it into different tile colors.
  */
 public class Assets implements Disposable {
 
-    private static final String[] NAMES = {
-        "dirt",
-        "player"
-    };
-
-    private final AssetManager manager = new AssetManager();
-
-    private final Map<String, TextureRegion> regions = new HashMap<>();
+    private final Texture pixelTexture;
+    private final TextureRegion pixel;
 
     public Assets() {
 
-        // Tell AssetManager which textures we need.
-        for (String name : NAMES) {
-            manager.load(name + ".png", Texture.class);
-        }
+        Pixmap pixmap = new Pixmap(
+                1,
+                1,
+                Pixmap.Format.RGBA8888
+        );
 
-        // Wait until the textures are loaded.
-        manager.finishLoading();
+        pixmap.setColor(1f, 1f, 1f, 1f);
+        pixmap.fill();
 
-        // Get the loaded textures.
-        for (String name : NAMES) {
+        pixelTexture = new Texture(pixmap);
 
-            Texture texture =
-                    manager.get(name + ".png", Texture.class);
+        pixmap.dispose();
 
-            // Keep pixel art sharp.
-            texture.setFilter(
-                    Texture.TextureFilter.Nearest,
-                    Texture.TextureFilter.Nearest
-            );
-
-            regions.put(
-                    name,
-                    new TextureRegion(texture)
-            );
-        }
+        pixel = new TextureRegion(pixelTexture);
     }
 
-    public TextureRegion get(String name) {
-
-        TextureRegion region = regions.get(name);
-
-        if (region == null) {
-            throw new IllegalArgumentException(
-                    "Missing texture: " + name
-            );
-        }
-
-        return region;
+    /**
+     * Returns the 1x1 white texture region.
+     */
+    public TextureRegion pixel() {
+        return pixel;
     }
 
     @Override
     public void dispose() {
-        manager.dispose();
+        pixelTexture.dispose();
     }
 }
